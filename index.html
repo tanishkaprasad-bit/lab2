@@ -4,9 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#ff35b8" />
+  <meta name="description" content="Create a retro movie-poster-inspired birthday celebration with Birthday Rewind!" />
+
   <title>Birthday Rewind ✨ | Retro Movie Poster Maker</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="app.js" defer></script>
+
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+  <link rel="apple-touch-icon" href="./icon-192.png" />
+  <link rel="stylesheet" href="./style.css" />
+
+  <script src="./app.js" defer></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js", { scope: "./" })
+          .catch((error) => {
+            console.error("Service worker registration failed:", error);
+          });
+      });
+    }
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -15,6 +33,7 @@
     <p class="intro">Your birth month picks the movie mood. Your birthday gets the spotlight. Cue the glitter, flip phones, and opening credits.</p>
     <div class="retro-sticker">NOW PLAYING<br><strong>YOU!</strong></div>
   </header>
+
   <main class="app-layout">
     <section class="panel" aria-labelledby="form-heading">
       <div class="section-kicker">01 / YOUR INFO</div>
@@ -22,8 +41,10 @@
       <form id="poster-form">
         <label for="name">Star name</label>
         <input id="name" name="name" maxlength="24" placeholder="e.g. Alex" value="Birthday Star" autocomplete="nickname" />
+
         <label for="birthday">Birthday</label>
         <input id="birthday" name="birthday" type="date" required />
+
         <label for="genre">Your retro movie mood</label>
         <select id="genre" name="genre">
           <option value="romcom">💕 Teen rom-com</option>
@@ -32,11 +53,13 @@
           <option value="mystery">📟 Teen mystery</option>
           <option value="fantasy">🦋 Pop fantasy</option>
         </select>
+
         <button class="primary-button" type="submit">✦ Roll the opening credits ✦</button>
         <p class="hint">Each month has its own throwback-inspired theme. This is a fan-made vibe generator, not an official movie poster.</p>
       </form>
       <div class="mini-tape" aria-hidden="true"><span>PLAY ▶</span><span>REWIND ◀◀</span></div>
     </section>
+
     <section class="poster-section" aria-label="Your generated retro birthday movie poster">
       <div class="poster-label"><span>YOUR PERSONAL VHS COVER</span><span id="theme-month">MONTHLY FEATURE</span></div>
       <div class="poster-frame">
@@ -57,13 +80,16 @@
           </div>
         </article>
       </div>
+
       <div class="poster-actions">
         <button class="save-button" id="save-button" type="button">⬇ Save my poster</button>
         <p class="save-status" id="save-status" role="status" aria-live="polite"></p>
       </div>
+
       <p class="disclaimer">A nostalgic fan-made tribute to the era of mall hangs, mixtapes, and maximalist movie magic.</p>
     </section>
   </main>
+
   <footer>✿ MADE WITH GLITTER, GLOSS & A LITTLE NOSTALGIA ✿</footer>
 </body>
 </html>

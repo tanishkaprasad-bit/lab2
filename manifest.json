@@ -1,0 +1,28 @@
+
+{
+  "id": "./",
+  "name": "Birthday Rewind! | Retro Movie Poster Maker",
+  "short_name": "Birthday Rewind",
+  "description": "Create a retro movie-poster-inspired birthday celebration.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#ff35b8",
+  "background_color": "#ff35b8",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
+    
